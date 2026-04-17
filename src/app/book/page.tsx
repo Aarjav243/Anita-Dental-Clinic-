@@ -226,11 +226,19 @@ export default function BookPage() {
                 Thank you, {name}. Your appointment request has been sent to the clinic.
               </p>
               <p className="text-sm text-gray-400 mb-6">
-                You'll receive a WhatsApp confirmation on <strong>{phone}</strong> once the clinic confirms your booking.
+                The clinic will review your request shortly. Track your appointment status below.
               </p>
-              <Button onClick={() => { setStep('service'); setSelectedService(null); setSelectedSlot(null); setSelectedDate(''); setName(''); setPhone(''); setNotes('') }}>
-                Book Another Appointment
-              </Button>
+              <div className="flex flex-col gap-3">
+                <Button
+                  className="bg-teal-600 hover:bg-teal-700"
+                  onClick={() => window.open(`/track?phone=${encodeURIComponent(phone)}`, '_blank')}
+                >
+                  Track My Appointment
+                </Button>
+                <Button variant="outline" onClick={() => { setStep('service'); setSelectedService(null); setSelectedSlot(null); setSelectedDate(''); setName(''); setPhone(''); setNotes('') }}>
+                  Book Another Appointment
+                </Button>
+              </div>
             </CardContent>
           </Card>
         )}

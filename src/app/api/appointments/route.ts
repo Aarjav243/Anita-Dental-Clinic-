@@ -57,6 +57,8 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const status = searchParams.get('status')
   const date = searchParams.get('date')
+  const from = searchParams.get('from')
+  const to = searchParams.get('to')
 
   let query = supabaseAdmin
     .from('appointments')
@@ -69,6 +71,8 @@ export async function GET(req: NextRequest) {
       .gte('slot_start', `${date}T00:00:00.000Z`)
       .lte('slot_start', `${date}T23:59:59.999Z`)
   }
+  if (from) query = query.gte('slot_start', `${from}T00:00:00.000Z`)
+  if (to) query = query.lte('slot_start', `${to}T23:59:59.999Z`)
 
   const { data, error } = await query
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })

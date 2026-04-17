@@ -114,6 +114,9 @@ export function Navbar() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+          <Button variant="outline" className="font-medium" asChild>
+            <Link href="/track">Track Appointment</Link>
+          </Button>
           <Button className="bg-accent hover:bg-accent/90 text-white font-bold" asChild>
             <Link href="/book">Book Appointment</Link>
           </Button>
@@ -144,6 +147,9 @@ export function Navbar() {
                 </Link>
                 <Link href="#contact" className="text-lg font-medium hover:text-accent">
                   Contact
+                </Link>
+                <Link href="/track" className="text-lg font-medium hover:text-accent">
+                  Track Appointment
                 </Link>
                 <Button className="mt-4 bg-accent hover:bg-accent/90 text-white font-bold w-full" asChild>
                   <Link href="/book">Book Appointment</Link>
